@@ -191,7 +191,7 @@ setReplaceMethod("smoothed",
 
 
 setMethod("normalize", "Spectrum",
-          function(object, method = c("max", "sum"), ...) {
+          function(object, method = c("max", "sum", "msts"), ...) {
               normalise_Spectrum(object, method = match.arg(method))
           })
 

@@ -35,6 +35,11 @@ normalise_MSnSet <- function(object, method, ...) {
       med <- median(as.numeric(e), na.rm = TRUE)
       cmeds <- apply(e, 2L, median, na.rm = TRUE)
       e <- sweep(e, 2L, cmeds - med)
+  } else if (method == "msts") {
+    div <- rowSums(exprs(object), na.rm = TRUE)
+    e <- exprs(object)/div
+    e <- e * exprs(object)
+    
   } else {
     switch(method,
            max = div <- .rowMaxs(exprs(object), na.rm = TRUE),

@@ -693,7 +693,7 @@ setMethod("trimMz", signature("OnDiskMSnExp", "numeric"),
 ## `normalise` method to be applied to each spectrum once spectrum
 ## data (or intensity etc) is extracted.
 setMethod("normalize", "OnDiskMSnExp",
-          function(object, method = c("max", "sum"), ...) {
+          function(object, method = c("max", "sum", "msts"), ...) {
               method <- match.arg(method)
               ps <- ProcessingStep("normalise", list(method = method))
               object@spectraProcessingQueue <- c(object@spectraProcessingQueue,
